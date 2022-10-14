@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ApriSiVillage": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}
