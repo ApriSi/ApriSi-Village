@@ -1,16 +1,14 @@
 ﻿
 using ApriSiVillage.Items;
-using ApriSiVillage.Locations;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ApriSiVillage.Entities
 {
 
     public class Villager
     {
-        public string[] Names = new string[]
+        private string[] _names = new string[]
         {
             "Per", "John", "Jack", "Sarah", "Rem", "Ram",
             "Karen", "Soren", "Rasmus", "Patrick", "Jakob",
@@ -20,14 +18,14 @@ namespace ApriSiVillage.Entities
         public Villager(int id)
         {
             Id = id;
-            Name = Names[RNG.Range(0, Names.Length)];
+            Name = _names[RNG.Range(0, _names.Length)];
             Age = RNG.Range(13, 85);
             Money = RNG.Range(0, 100);
             WeekdayHandler.OnNextDay += RandomAction;
             Inventory = RandomItems();
         }
 
-        private string actionHistory;
+        private string _actionHistory;
 
         public int Id;
         public string Name;
@@ -44,7 +42,7 @@ namespace ApriSiVillage.Entities
         public void GetHistory()
         {
             Console.WriteLine(ToString());
-            Console.WriteLine(actionHistory);
+            Console.WriteLine(_actionHistory);
 
             Console.WriteLine("Inventory:");
             foreach (var item in Inventory)
@@ -69,7 +67,7 @@ namespace ApriSiVillage.Entities
         {
             var locations = Simulation.LocationManager.Locations;
             var location = locations[RNG.Range(0, locations.Count)];
-            actionHistory += $"{Name} entered {location.Name} [{location.GetType().Name}]\n";
+            _actionHistory += $"{Name} entered {location.Name} [{location.GetType().Name}]\n";
         }
 
         private List<Item> RandomItems()

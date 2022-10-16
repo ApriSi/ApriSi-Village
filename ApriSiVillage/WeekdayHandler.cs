@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace ApriSiVillage
 {
@@ -8,7 +7,7 @@ namespace ApriSiVillage
         public delegate void NextDayAction();
         public static event NextDayAction OnNextDay;
 
-        public static string[] Weeks = new string[]
+        private static string[] _weeks = new string[]
         {
             "Monday",
             "Tuesday",
@@ -19,31 +18,31 @@ namespace ApriSiVillage
             "Sunday"
         };
 
-        private static int weeksCount = 0;
-        private static string weekday = Weeks[0];
+        private static int _weeksCount = 0;
+        public static string Weekday = _weeks[(int)Week.Monday];
 
         public static void NextDay()
         {
             IncrementDay();
             TryDoomsday();
             OnNextDay.Invoke();
-            Console.WriteLine($"The sun is going up and it's now {weekday}");
+            Console.WriteLine($"The sun is going up and it's now {Weekday}");
         }
 
         private static void IncrementDay()
         {
-            weeksCount++;
-            if (weeksCount < Weeks.Length) {
-                weekday = Weeks[weeksCount];
+            _weeksCount++;
+            if (_weeksCount < _weeks.Length) {
+                Weekday = _weeks[_weeksCount];
             } else {
-                weekday = Weeks[0];
-                weeksCount = 0;
+                Weekday = _weeks[(int)Week.Monday];
+                _weeksCount = 0;
             }
         }
 
         private static void TryDoomsday()
         {
-            if(weekday == Weeks[0]) {
+            if(Weekday == _weeks[(int)Week.Monday]) {
                 if (RNG.Range(0, 1000) >= 800)
                     Simulation.IsVillageAlive = false;
             } else {
@@ -51,5 +50,16 @@ namespace ApriSiVillage
                     Simulation.IsVillageAlive = false;
             }
         }
+    }
+
+    public enum Week
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
     }
 }
