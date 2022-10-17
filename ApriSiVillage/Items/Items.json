@@ -1,28 +1,20 @@
 ﻿{
-  "Swords": {
-    "0": {
+  "Swords": [
+    {
       "Name": "Fire Sword",
-      "Damage": 0,
-      "Attribute": "Fire",
-      "Price": 0
+      "Attribute": "Fire"
     },
-    "1": {
+    {
       "Name": "Frost Sword",
-      "Damage": 0,
-      "Attribute": "Ice",
-      "Price": 0
+      "Attribute": "Ice"
     },
-    "2": {
+    {
       "Name": "Light Saber",
-      "Damage": 0,
-      "Attribute": "Light",
-      "Price": 0
+      "Attribute": "Light"
     },
-    "3": {
+    {
       "Name": "Stick",
-      "Damage": 0,
-      "Attribute": "None",
-      "Price": 0
+      "Attribute": "None"
     }
-  }
+  ]
 }

@@ -14,9 +14,6 @@ namespace ApriSiVillage
 
         public static void Start()
         {
-            var items = JsonHandler.ReadJson(@"C:\\Users\\BAUHAUS\\Documents\\Projects\\ApriSi-Village\\ApriSiVillage\\Items\\Items.json");
-            Console.WriteLine(items);
-
             Console.WriteLine($"There's {VillagerManager.GetVillagerCount()} Villagers\n" +
                 $"and {LocationManager.GetLocationCount()} Locations in Aprisi Village\n");
 

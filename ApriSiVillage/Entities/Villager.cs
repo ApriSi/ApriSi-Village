@@ -140,7 +140,7 @@ namespace ApriSiVillage.Entities
             var items = new List<Item>();
 
             items.AddRange(CreateItem<Food>(0, 3));
-            //items.AddRange(CreateItem<Sword>(0, 2));
+            items.AddRange(CreateItem<Sword>(0, 2));
 
             return items;
         }

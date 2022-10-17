@@ -7,11 +7,12 @@ namespace ApriSiVillage
 {
     public static class JsonHandler
     {
-        public static object ReadJson(string path)
+        public static JObject GetJsonObject(string path)
         {
-            var json = new StreamReader(path);
-            
-            return json;
+            string json = File.ReadAllText(path);
+            var obj = JObject.Parse(json);
+
+            return obj;
         }
     }
 }

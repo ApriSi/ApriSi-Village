@@ -1,6 +1,7 @@
 ﻿using ApriSiVillage.Interface;
-using Newtonsoft.Json; 
-
+using System.IO;
+using System;
+using System.Linq;
 
 namespace ApriSiVillage.Items
 {
@@ -8,10 +9,12 @@ namespace ApriSiVillage.Items
     {
         public Sword(int price = 0) : base(price)
         {
-            /*Name = sword.Name;
+            var items = JsonHandler.GetJsonObject($@"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName}\Items\Items.json");
+            var sword = items["Swords"][RNG.Range(0, items["Swords"].Count())];
+            Name = sword["Name"].ToString();
             Damage = RNG.Range(1, 20);
-            Attribute = sword.Attribute;
-            price = sword.Price;*/
+            Attribute = sword["Attribute"].ToString();
+            Price = price;
         }
 
         public int Damage;
