@@ -15,6 +15,14 @@
     {
       "Name": "Stick",
       "Attribute": "None"
+    },
+    {
+      "Name": "Cat on a Stick",
+      "Attribute": "Toxic"
+    },
+    {
+      "Name": "Dog",
+      "Attribute": "Rabies"
     }
   ]
 }

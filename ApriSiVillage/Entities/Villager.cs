@@ -92,24 +92,40 @@ namespace ApriSiVillage.Entities
 
         private void TradeAction()
         {
-            if (Inventory.Count <= 0) return;
+            if (Money <= 0) return;
             if (CurrentLocation is null) return;
             if (CurrentLocation.MaxCapacity <= 1) return;
             
             var villager = CurrentLocation.Capacity[RNG.Range(0, CurrentLocation.Capacity.Count)];
             if (villager == this) return;
+
             if (villager.Inventory.Count <= 0) return;
 
-            Item offer = Inventory[RNG.Range(0, Inventory.Count)];
             Item recieve = villager.Inventory[RNG.Range(0, villager.Inventory.Count)];
-
             villager.Inventory.Remove(recieve);
             Inventory.Add(recieve);
 
-            villager.Inventory.Add(offer);
-            Inventory.Remove(offer);
-            ActionHistory += $"Traded {offer.Name} with {villager.Name} ID: {villager.Id} for {recieve.Name}\n";
-            villager.ActionHistory += $"Traded {recieve.Name} with {Name} ID: {Id} for {offer.Name}\n";
+
+            var offerMoneyChance = RNG.Range(0, 10);
+            if(offerMoneyChance >= 5)
+            {
+                var offerMoney = RNG.Range(1, Money);
+
+                ActionHistory += $"Traded ${offerMoney} with {villager.Name} ID: {villager.Id} for {recieve.Name} (Balance Before: {Money})\n";
+                villager.ActionHistory += $"Traded {recieve.Name} with {Name} ID: {Id} for ${offerMoney} (Balance Before: {villager.Money})\n";
+
+                villager.Money += offerMoney;
+                Money -= offerMoney;
+
+            } else {
+                if (Inventory.Count <= 0) return;
+                var offerItem = Inventory[RNG.Range(0, Inventory.Count)];
+                villager.Inventory.Add(offerItem);
+                Inventory.Remove(offerItem);
+
+                ActionHistory += $"Traded {offerItem.Name} with {villager.Name} ID: {villager.Id} for {recieve.Name}\n";
+                villager.ActionHistory += $"Traded {recieve.Name} with {Name} ID: {Id} for {offerItem.Name}\n";
+            }
         }
 
         private void EnterLocationAction()
@@ -123,7 +139,6 @@ namespace ApriSiVillage.Entities
                 CurrentLocation = null;
             }
 
-            
             if (location.Capacity.Count >= location.MaxCapacity)
             {
                 ActionHistory += $"Tried to enter {location.Name} [{location.GetType().Name}] but it was full\n";
