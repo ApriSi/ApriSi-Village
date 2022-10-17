@@ -1,4 +1,4 @@
-<h2>Checklist<H2>
+<h2>Checklist</h2>
 ✅ Der kræves at indbyggerne skal starte med nogle tilfældige genstande, når de skabes.
 ✅ Skabe lokationer som eksempelvis Banker, supermarkeder osv. Lokationerne skal være objekter
 ✅ Skabe og bevæge indbyggere mellem lokationer. Indbyggerne skal være objekter.
@@ -7,10 +7,11 @@
 ✅ Der er ikke behov for nogen stor grafisk brugerflade, men Underviseren skal kunne se at objekterne interagerer med hinanden.
 ✅ Opgaven SKAL gøre brug af Events og Delegate. Brug det for eksempel til at skabe random events, hver dag.
 
+
 ✅ Der skal anvendes nedarvning eller gøres brug af interfaces (helst begge dele)
 ✅ Der skal være eksempler på Error Handling
 ❌ Projektet skal være dokumenteret med et Klassediagram
 
 
-<h2>Feature Checklist<h2>
+<h2>Feature Checklist</h2>
 ❌ Villagers kan slå hindanden
