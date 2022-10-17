@@ -4,7 +4,7 @@
     {
         private string[] _names = {
             "Sushi", "Bread", "Fish", "Lasagna",
-            "Rice", "Noodles"
+            "Rice", "Noodles", "Baguette"
         };
 
         public Food(int price) : base(price)

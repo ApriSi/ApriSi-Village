@@ -18,7 +18,7 @@ namespace ApriSiVillage
             "Sunday"
         };
 
-        private static int _weeksCount = 0;
+        public static int WeeksCount = 0;
         public static string Weekday = _weeks[(int)Week.Monday];
 
         public static void NextDay()
@@ -31,23 +31,30 @@ namespace ApriSiVillage
 
         private static void IncrementDay()
         {
-            _weeksCount++;
-            if (_weeksCount < _weeks.Length) {
-                Weekday = _weeks[_weeksCount];
+            WeeksCount++;
+            if (WeeksCount < _weeks.Length) {
+                Weekday = _weeks[WeeksCount];
             } else {
                 Weekday = _weeks[(int)Week.Monday];
-                _weeksCount = 0;
+                WeeksCount = 0;
             }
         }
 
         private static void TryDoomsday()
         {
-            if(Weekday == _weeks[(int)Week.Monday]) {
-                if (RNG.Range(0, 1000) >= 800)
+            //It's monday and the world has a 20% chance of colapsing 
+            if (Weekday == _weeks[(int)Week.Monday]) {
+                if (RNG.Range(0, 10) >= 8)
                     Simulation.IsVillageAlive = false;
             } else {
                 if (RNG.Range(0, 1000) >= 999)
                     Simulation.IsVillageAlive = false;
+            }
+
+            if(!Simulation.IsVillageAlive)
+            {
+                foreach (var villager in Simulation.VillagerManager.Villagers)
+                    villager.SetDeath(true);
             }
         }
     }

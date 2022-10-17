@@ -1,14 +1,20 @@
-﻿namespace ApriSiVillage.Items
-{
-    public class Sword : Item
-    {
-        private string[] _names = {
-            "Fire Axe", "Excalibur", "Iron Sword"
-        };
+﻿using ApriSiVillage.Interface;
+using Newtonsoft.Json; 
 
-        public Sword(int price) : base(price)
+
+namespace ApriSiVillage.Items
+{
+    public class Sword : Item, IDamageable
+    {
+        public Sword(int price = 0) : base(price)
         {
-            Name = _names[RNG.Range(0, _names.Length)];
+            /*Name = sword.Name;
+            Damage = RNG.Range(1, 20);
+            Attribute = sword.Attribute;
+            price = sword.Price;*/
         }
+
+        public int Damage;
+        public string Attribute;
     }
 }

@@ -12,7 +12,7 @@ namespace ApriSiVillage.Locations
         }
 
         public string Name;
-        public List<Villager> Capacity;
+        public List<Villager> Capacity = new();
         public int MaxCapacity;
     }
 }

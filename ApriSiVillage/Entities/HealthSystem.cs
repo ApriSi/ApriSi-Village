@@ -11,13 +11,11 @@ namespace ApriSiVillage.Entities
 
         public int Health;
 
-        public void TakeDamage(int amount)
+        public void TakeDamage(Villager target, int amount)
         {
             Health -= amount;
-            if(Health <= 0)
-            {
-                Console.WriteLine("Died");
-                // Kill
+            if(Health <= 0) {
+                target.SetDeath(true);
             }
         }
     }
