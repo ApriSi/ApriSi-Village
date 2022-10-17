@@ -3,23 +3,21 @@ using ApriSiVillage.Items;
 using ApriSiVillage.Locations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ApriSiVillage.Entities
 {
 
     public class Villager
     {
-        private string[] _names = new string[]
-        {
-            "Per", "John", "Jack", "Sarah", "Rem", "Ram",
-            "Karen", "Soren", "Rasmus", "Patrick", "Jakob",
-            "Mads"
-        };
 
         public Villager(int id)
         {
+            var names = JsonHandler.GetJsonObject("Names.json");
+            var name = names["VillagerNames"][RNG.Range(0, names["VillagerNames"].Count())];
+
             Id = id;
-            Name = _names[RNG.Range(0, _names.Length)];
+            Name = name.ToString();
             Age = RNG.Range(13, 85);
             Money = RNG.Range(0, 100);
             WeekdayHandler.OnNextDay += RandomAction;
@@ -78,7 +76,7 @@ namespace ApriSiVillage.Entities
             }
 
             var chanceToTrade = RNG.Range(0, 100);
-            if (chanceToTrade >= 70)
+            if (chanceToTrade >= 85)
             {
                 TradeAction();
                 return;
@@ -155,7 +153,7 @@ namespace ApriSiVillage.Entities
             var items = new List<Item>();
 
             items.AddRange(CreateItem<Food>(0, 3));
-            items.AddRange(CreateItem<Sword>(0, 2));
+            items.AddRange(CreateItem<Weapon>(0, 2));
 
             return items;
         }

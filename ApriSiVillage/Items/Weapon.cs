@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace ApriSiVillage.Items
 {
-    public class Sword : Item, IDamageable
+    public class Weapon : Item, IDamageable
     {
-        public Sword(int price = 0) : base(price)
+        public Weapon(int price = 0) : base(price)
         {
-            var items = JsonHandler.GetJsonObject($@"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName}\Items\Items.json");
-            var sword = items["Swords"][RNG.Range(0, items["Swords"].Count())];
+            var items = JsonHandler.GetJsonObject("Items/Items.json");
+            var sword = items["Weapons"][RNG.Range(0, items["Weapons"].Count())];
             Name = sword["Name"].ToString();
             Damage = RNG.Range(1, 20);
             Attribute = sword["Attribute"].ToString();

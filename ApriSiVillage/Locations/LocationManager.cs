@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ApriSiVillage.Locations
 {
@@ -13,21 +14,16 @@ namespace ApriSiVillage.Locations
             CreateLocations<Supermarket>(1, 5);
             CreateLocations<Bank>(1, 3);
         }
-
-        private string[] _names =
-        {
-            "Abeona Mons", "Akna Montes", "Aleksota Mons", "Anala Mons",
-            "Api Mons", "Atai Mons", "Atira Mons", "Atsyrkhus Mons",
-            "Awenhai Mons", "Bunzi Mons", "Hallgerda Mons", "Innini Mons",
-            "Irnini Mons"
-        };
         
         public void CreateLocations<T>(int min, int max)
         {
+            var names = JsonHandler.GetJsonObject("Names.json");
+            var name = names["LocationNames"][RNG.Range(0, names["LocationNames"].Count())];
+
             var amount = RNG.Range(min, max);
             for (int i = 0; i < amount; i++)
             {
-                var location = Activator.CreateInstance(typeof(T), new object[] { _names[RNG.Range(0, _names.Length)], RNG.Range(3, 12)});
+                var location = Activator.CreateInstance(typeof(T), new object[] { name.ToString(), RNG.Range(3, 12)});
                 Locations.Add(location as Location);
             }
         }

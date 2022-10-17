@@ -7,9 +7,10 @@ namespace ApriSiVillage
 {
     public static class JsonHandler
     {
+        private static string _directoryPath = $"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName}/";
         public static JObject GetJsonObject(string path)
         {
-            string json = File.ReadAllText(path);
+            string json = File.ReadAllText(_directoryPath + path);
             var obj = JObject.Parse(json);
 
             return obj;
