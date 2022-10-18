@@ -14,6 +14,7 @@ namespace ApriSiVillage
 
         public static void Start()
         {
+
             Console.WriteLine($"There's {VillagerManager.GetVillagerCount()} Villagers\n" +
                 $"and {LocationManager.GetLocationCount()} Locations in Aprisi Village\n");
 

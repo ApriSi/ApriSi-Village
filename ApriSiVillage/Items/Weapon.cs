@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ApriSiVillage.Items
 {
-    public class Weapon : Item, IDamageable
+    public class Weapon : Item
     {
         public Weapon(int price = 0) : base(price)
         {

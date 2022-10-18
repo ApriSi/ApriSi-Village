@@ -12,7 +12,7 @@ namespace ApriSiVillage
         {
             string json = File.ReadAllText(_directoryPath + path);
             var obj = JObject.Parse(json);
-
+            
             return obj;
         }
     }

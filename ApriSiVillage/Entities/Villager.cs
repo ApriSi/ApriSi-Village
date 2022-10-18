@@ -1,4 +1,5 @@
 ﻿
+using ApriSiVillage.Interface;
 using ApriSiVillage.Items;
 using ApriSiVillage.Locations;
 using System;
@@ -8,7 +9,7 @@ using System.Linq;
 namespace ApriSiVillage.Entities
 {
 
-    public class Villager
+    public class Villager : IDamageable
     {
 
         public Villager(int id)
@@ -114,7 +115,6 @@ namespace ApriSiVillage.Entities
 
                 villager.Money += offerMoney;
                 Money -= offerMoney;
-
             } else {
                 if (Inventory.Count <= 0) return;
                 var offerItem = Inventory[RNG.Range(0, Inventory.Count)];

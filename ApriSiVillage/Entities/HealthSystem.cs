@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ApriSiVillage.Entities
+﻿namespace ApriSiVillage.Entities
 {
     public class HealthSystem
     {
