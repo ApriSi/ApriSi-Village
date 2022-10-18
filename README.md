@@ -9,7 +9,7 @@
 
 <p>✅ Der skal anvendes nedarvning eller gøres brug af interfaces (helst begge dele)</p>
 <p>✅ Der skal være eksempler på Error Handling</p>
-<p>❌ Projektet skal være dokumenteret med et Klassediagram</p>
+<p>✅ Projektet skal være dokumenteret med et Klassediagram</p>
 
 
 <h2>Feature Checklist</h2>
